@@ -34,21 +34,21 @@ const Yelp = {
           { headers: { Authorization: `Bearer ${accessToken}` } }
         );
       })
-      .then(response => response.json)
+      .then(response => response.json())
       .then(jsonResponse => {
         if (jsonResponse.businesses) {
           return jsonResponse.businesses.map(business => {
             return {
               id: business.id,
-              imageSrc: business.image_url,
+              image_src: business.image_url,
               name: business.name,
-              address: business.location.address,
+              address1: business.location.address,
               city: business.location.city,
               state: business.location.state,
-              zipCode: business.location.zipCode,
+              zip_code: business.location.zipCode,
               category: business.categories[0].title,
               rating: business.rating,
-              reviewCount: business.reviewCount
+              review_count: business.reviewCount
             };
           });
         }
